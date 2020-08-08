@@ -2,6 +2,7 @@ package com.example.vkbot;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.springframework.test.util.AssertionErrors.assertEquals;
@@ -11,6 +12,12 @@ public class MessageServiceTest {
 
     @Autowired
     MessageService messageService;
+
+    @Value("${message.ok_reply}")
+    String OK_REPLY;
+
+    @Value("${message.confirmation_code}")
+    String CONFIRMATION_CODE;
 
     String confirmationJson = "{\"type\":\"confirmation\"}";
     String nullJson = "{\"type\":\"message_reply\"}";

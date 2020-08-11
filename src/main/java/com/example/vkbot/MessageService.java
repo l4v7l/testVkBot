@@ -2,23 +2,24 @@ package com.example.vkbot;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
+@Getter
+@Setter
+@ConfigurationProperties(prefix = "message")
 public class MessageService {
 
     private final RestTemplate restTemplate;
 
-    @Value("${message.ok_reply}")
     String okReply;
-
-    @Value("${message.confirmation_code}")
     String confirmationCode;
-
-    @Value("${message.token}")
     String token;
 
     public MessageService(RestTemplateBuilder restTemplateBuilder) {
@@ -50,6 +51,7 @@ public class MessageService {
                 returnString = null;
         }
 
+        System.out.println(returnString);
         return returnString;
     }
 }

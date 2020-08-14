@@ -9,11 +9,8 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.io.UnsupportedEncodingException;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.Map;
 
 @Service
 @Getter
@@ -63,7 +60,6 @@ public class MessageService {
                 returnString = null;
         }
 
-        System.out.println(returnString);
         return returnString;
     }
 }

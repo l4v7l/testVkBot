@@ -1,7 +1,8 @@
 package com.example.vkbot;
 
+import com.example.vkbot.model.Action;
+import com.example.vkbot.model.Message;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -33,16 +34,16 @@ public class MessageService {
         String returnString;
 
         Gson gson = new Gson();
-        JsonObject jsonObject = gson.fromJson(request, JsonObject.class);
+        Action action = gson.fromJson(request, Action.class);
 
-        switch (jsonObject.get("type").getAsString()) {
+        switch (action.getType()) {
             case ("confirmation"):
                 returnString = confirmationCode;
                 break;
             case ("message_new"):
-                JsonObject messageObject = jsonObject.get("object").getAsJsonObject().get("message").getAsJsonObject();
-                String text = messageObject.get("text").getAsString();
-                Long fromId = messageObject.get("from_id").getAsLong();
+                Message message = action.getObject().getMessage();
+                String text = message.getText();
+                int fromId = message.getFromId();
 
                 String encodedText = URLEncoder.encode(text, StandardCharsets.UTF_8);
                 String url = String.format("https://api.vk.com/method/messages.send?user_ids=%d&message=%s&access_token=%s&v=5.122&random_id=0", fromId, encodedText, token);

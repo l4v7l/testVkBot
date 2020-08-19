@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Action {
+public class MessageNewAction {
     private String type;
     private MessageObject object;
     @SerializedName("group_id")

@@ -21,7 +21,7 @@ import java.nio.charset.StandardCharsets;
 @ConfigurationProperties(prefix = "message")
 public class MessageService {
 
-    private Logger logger = LogManager.getLogger();
+    private static Logger logger = LogManager.getLogger();
 
     private final RestTemplate restTemplate;
 

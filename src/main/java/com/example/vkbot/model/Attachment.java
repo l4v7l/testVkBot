@@ -1,16 +1,27 @@
 package com.example.vkbot.model;
 
+import com.example.vkbot.model.attachments.*;
+import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class Attachment<T> {
-    private String type;
-    private T object;
+public class Attachment {
 
-    Attachment(String type, T object){
-        this.type = type;
-        this.object = object;
-    }
+    private String type;
+    private Photo photo;
+    private Video video;
+    private Audio audio;
+    private Doc doc;
+    private Link link;
+    private Market market;
+    @SerializedName("market_album")
+    private MarketAlbum marketAlbum;
+    private WallPost wall;
+    @SerializedName("wall_reply")
+    private WallReply wallReply;
+    private Sticker sticker;
+    private Gift gift;
+
 }

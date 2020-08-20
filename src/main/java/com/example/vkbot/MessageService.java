@@ -38,7 +38,9 @@ public class MessageService {
         String returnString;
 
         Gson gson = new Gson();
+        System.out.println(request);
         MessageNewAction messageNewAction = gson.fromJson(request, MessageNewAction.class);
+
 
         switch (messageNewAction.getType()) {
             case ("confirmation"):
@@ -48,6 +50,8 @@ public class MessageService {
                 Message message = messageNewAction.getObject().getMessage();
                 String text = message.getText();
                 int fromId = message.getFromId();
+
+                logger.info("Attachments {} {}", message.getAttachments().get(0).getType(), message.getAttachments().get(0).getPhoto().getSizes().get(0).getUrl());
                 logger.info("Received message: {} ", text);
 
                 String encodedText = URLEncoder.encode(text, StandardCharsets.UTF_8);

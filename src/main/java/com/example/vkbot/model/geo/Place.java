@@ -1,12 +1,15 @@
 package com.example.vkbot.model.geo;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Place {
     private int id;
     private String title;
-    //TODO to thing about type. in doc it is named @number@
-    private int latitude;
-    private int longitude;
-
+    private float latitude;
+    private float longitude;
     private int created;
     private String icon;
     private String country;

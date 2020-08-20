@@ -1,10 +1,13 @@
 package com.example.vkbot.model;
 
 import com.example.vkbot.model.geo.Geo;
+import com.example.vkbot.model.keyboard.Keyboard;
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
+import java.util.ArrayList;
 
 @Getter
 @Setter
@@ -22,15 +25,13 @@ public class Message {
     private String ref;
     @SerializedName("ref_source")
     private String refSource;
-    //TODO change type to Attachments. Create an interface Attachmnts and implements from it all of attachments types
-    private String[] attachments;
+    private ArrayList<Attachment> attachments;
     private boolean important;
     private Geo geo;
     private String payload;
-    //TODO
-    private String keyboard;
+    private Keyboard keyboard;
     @SerializedName("fwd_messages")
-    private Message[] fwdMessages;
+    private ArrayList<Message> fwdMessages;
     @SerializedName("reply_message")
     private Message replyMessage;
     private MessageAction action;
